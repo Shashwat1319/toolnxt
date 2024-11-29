@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1CM9S92RRR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1CM9S92RRR');
+</script>
+</head>
+<body>
+  <nav>
+    <div class="main">
+    <img src="Logo.jpeg" alt="" id="Logo">
+    <ul>
+      <li><a href="index.html#Financial">Financial </a></li>
+      <li><a href="index.html#Business">Business </a></li>
+      <li><a href="index.html#Health_and_Fitness ">Health and Fitness </a></li>
+      <li><a href="index.html#Math_Science ">Math and Science </a></li>
+      <li><a href="index.html#Budget_Savings ">Budget and Savings </a></li>
+    </ul>
+   </div>
+
+</nav>
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  background-image: url('GIF.webp');
+  background-position: center;
+  background-size: cover;
+}
+
+.container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input, .form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+ul {
+  list-style-type: none;
+  margin-top: 20px;
+}
+
+ul li {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  border-left: 4px solid #007BFF;
+  display: flex;
+  justify-content: space-between;
+}
+
+.result-group {
+  margin-top: 20px;
+}
+
+.result-group label {
+  font-weight: bold;
+}
+
+.result-group span {
+  font-weight: bold;
+  color: #007BFF;
+}
+
+    </style>
+  <div class="container">
+    <h1>Expense Tracker</h1>
+
+    <form id="expense-form">
+      <div class="form-group">
+        <label for="expense-description">Expense Description</label>
+        <input type="text" id="expense-description" placeholder="Enter a description">
+      </div>
+
+      <div class="form-group">
+        <label for="expense-amount">Amount ($)</label>
+        <input type="number" id="expense-amount" placeholder="Enter the amount">
+      </div>
+
+      <div class="form-group">
+        <label for="expense-category">Category</label>
+        <select id="expense-category">
+          <option value="Groceries">Groceries</option>
+          <option value="Transportation">Transportation</option>
+          <option value="Entertainment">Entertainment</option>
+          <option value="Utilities">Utilities</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <button type="button" id="add-expense">Add Expense</button>
+    </form>
+
+    <h2>Expense List</h2>
+    <ul id="expense-list">
+      <!-- List of expenses will appear here -->
+    </ul>
+
+    <div id="results" class="result-group">
+      <label>Total Expenses:</label>
+      <span id="total-expenses">$0.00</span>
+    </div>
+  </div>
+
+  <script>
+    let totalExpenses = 0;
+
+document.getElementById('add-expense').addEventListener('click', function() {
+  const description = document.getElementById('expense-description').value;
+  const amount = parseFloat(document.getElementById('expense-amount').value);
+  const category = document.getElementById('expense-category').value;
+
+  if (description !== "" && !isNaN(amount) && amount > 0) {
+    // Create a new list item for the expense
+    const expenseList = document.getElementById('expense-list');
+    const listItem = document.createElement('li');
+    listItem.innerHTML = `${description} - $${amount.toFixed(2)} <strong>(${category})</strong>`;
+    expenseList.appendChild(listItem);
+
+    // Update total expenses
+    totalExpenses += amount;
+    document.getElementById('total-expenses').textContent = `$${totalExpenses.toFixed(2)}`;
+
+    // Clear the input fields
+    document.getElementById('expense-description').value = '';
+    document.getElementById('expense-amount').value = '';
+    document.getElementById('expense-category').value = 'Groceries';
+  } else {
+    alert('Please enter a valid description and amount.');
+  }
+});
+
+  </script>
+</body>
+</html>

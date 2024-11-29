@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROI Calculator</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1CM9S92RRR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1CM9S92RRR');
+</script>
+
+</head>
+<body>
+    <nav>
+        <div class="main">
+        <img src="Logo.jpeg" alt="" id="Logo">
+        <ul>
+          <li><a href="index.html#Financial">Financial </a></li>
+          <li><a href="index.html#Business">Business </a></li>
+          <li><a href="index.html#Health_and_Fitness ">Health and Fitness </a></li>
+          <li><a href="index.html#Math_Science ">Math and Science </a></li>
+          <li><a href="index.html#Budget_Savings ">Budget and Savings </a></li>
+        </ul>
+       </div>
+    </nav>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  background-image: url('GIF.webp');
+  background-position: center;
+  background-size: cover;
+}
+
+.container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#results {
+  margin-top: 20px;
+}
+
+.result-group {
+  margin-bottom: 10px;
+}
+
+.result-group label {
+  font-weight: bold;
+}
+
+.result-group span {
+  display: inline-block;
+  margin-left: 10px;
+  font-weight: bold;
+  color: #007BFF;
+}
+
+/* Hide results initially */
+.hidden {
+  display: none;
+}
+
+    </style>
+  <div class="container">
+    <h1>ROI Calculator</h1>
+    <form id="roi-form">
+      <div class="form-group">
+        <label for="initial-investment">Initial Investment</label>
+        <input type="number" id="initial-investment" placeholder="Enter initial investment amount">
+      </div>
+      <div class="form-group">
+        <label for="final-value">Final Value</label>
+        <input type="number" id="final-value" placeholder="Enter final value of investment">
+      </div>
+      <div class="form-group">
+        <label for="expenses">Expenses</label>
+        <input type="number" id="expenses" placeholder="Enter total expenses">
+      </div>
+      <button type="button" id="calculate">Calculate</button>
+    </form>
+
+    <div id="results" class="hidden">
+      <h2>Results</h2>
+      <div class="result-group">
+        <label>ROI (%):</label>
+        <span id="roi-result">--</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('calculate').addEventListener('click', function() {
+  const initialInvestment = parseFloat(document.getElementById('initial-investment').value);
+  const finalValue = parseFloat(document.getElementById('final-value').value);
+  const expenses = parseFloat(document.getElementById('expenses').value);
+
+  // ROI formula: ROI (%) = ((Final Value - Initial Investment - Expenses) / Initial Investment) * 100
+  const roi = ((finalValue - initialInvestment - expenses) / initialInvestment) * 100;
+
+  if (isFinite(roi) && initialInvestment > 0) {
+    document.getElementById('roi-result').textContent = roi.toFixed(2) + '%';
+
+    // Show the results
+    document.getElementById('results').classList.remove('hidden');
+  } else {
+    alert('Please check your inputs.');
+  }
+});
+  </script>
+</body>
+</html>

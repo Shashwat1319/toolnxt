@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit Conversion Calculator</title>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1CM9S92RRR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1CM9S92RRR');
+</script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="main">
+        <img src="Logo.jpeg" alt="" id="Logo">
+        <ul>
+          <li><a href="index.html#Financial">Financial </a></li>
+          <li><a href="index.html#Business">Business </a></li>
+          <li><a href="index.html#Health_and_Fitness ">Health and Fitness </a></li>
+          <li><a href="index.html#Math_Science ">Math and Science </a></li>
+          <li><a href="index.html#Budget_Savings ">Budget and Savings </a></li>
+        </ul>
+       </div>
+    </nav>
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  background-image: url('GIF.webp');
+  background-position: center;
+  background-size: cover;
+}
+
+.container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input, .form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#results {
+  margin-top: 20px;
+}
+
+.result-group {
+  margin-bottom: 10px;
+}
+
+.result-group label {
+  font-weight: bold;
+}
+
+.result-group span {
+  display: inline-block;
+  margin-left: 10px;
+  font-weight: bold;
+  color: #007BFF;
+}
+
+/* Hide results initially */
+.hidden {
+  display: none;
+}
+
+    </style>
+  <div class="container">
+    <h1>Unit Conversion Calculator</h1>
+    <form id="conversion-form">
+      <div class="form-group">
+        <label for="amount">Enter Amount</label>
+        <input type="number" id="amount" placeholder="Enter a value">
+      </div>
+
+      <div class="form-group">
+        <label for="from-unit">From Unit</label>
+        <select id="from-unit">
+          <option value="km">Kilometers</option>
+          <option value="mi">Miles</option>
+          <option value="kg">Kilograms</option>
+          <option value="lb">Pounds</option>
+          <option value="cm">Centimeters</option>
+          <option value="in">Inches</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="to-unit">To Unit</label>
+        <select id="to-unit">
+          <option value="mi">Miles</option>
+          <option value="km">Kilometers</option>
+          <option value="lb">Pounds</option>
+          <option value="kg">Kilograms</option>
+          <option value="in">Inches</option>
+          <option value="cm">Centimeters</option>
+        </select>
+      </div>
+
+      <button type="button" id="convert">Convert</button>
+    </form>
+
+    <div id="results" class="hidden">
+      <h2>Converted Value</h2>
+      <div class="result-group">
+        <label>Result:</label>
+        <span id="conversion-result">--</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('convert').addEventListener('click', function() {
+  const amount = parseFloat(document.getElementById('amount').value);
+  const fromUnit = document.getElementById('from-unit').value;
+  const toUnit = document.getElementById('to-unit').value;
+
+  if (isNaN(amount)) {
+    alert('Please enter a valid number.');
+    return;
+  }
+
+  const conversionFactors = {
+    km_mi: 0.621371,
+    mi_km: 1.60934,
+    kg_lb: 2.20462,
+    lb_kg: 0.453592,
+    cm_in: 0.393701,
+    in_cm: 2.54
+  };
+
+  const conversionKey = `${fromUnit}_${toUnit}`;
+  const factor = conversionFactors[conversionKey];
+
+  if (factor) {
+    const result = amount * factor;
+    document.getElementById('conversion-result').textContent = result.toFixed(2);
+    document.getElementById('results').classList.remove('hidden');
+  } else {
+    alert('Invalid unit conversion.');
+  }
+});
+  </script>
+</body>
+</html>

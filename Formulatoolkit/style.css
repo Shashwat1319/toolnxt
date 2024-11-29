@@ -1,0 +1,253 @@
+
+/* CSS Reset */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+button{
+    padding: 12px;
+    width: 150px;
+    font-size: 20px;
+    color: white;
+    border: 1px solid black;
+    border-radius: 6px;
+    background-color: rgb(169, 19, 19);
+    margin-top: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+button:hover{
+    width: 180px;
+    padding: 13px;
+    transition: all 1s;
+    cursor: pointer;
+    background-color: blue;
+    /* color: black; */
+    box-sizing: border-box;
+    box-shadow: 10px 10px 80px white;
+}
+/* Navigation Bar Styling */
+nav {
+    background-color: #000000; /* Background color of the nav bar */
+    padding: 10px 0; /* Space around the items in the nav */
+}
+ 
+nav .main {
+    display: flex; /* Align items horizontally */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space between logo and menu */
+    max-width: 1200px; /* Optional: Limit the width */
+    margin: 0 auto; /* Center the nav container */
+    padding: 0 20px; /* Padding inside the nav */
+}
+
+#Logo {
+    max-height: 70px; /* Adjust the size of the logo */
+    align-self: left;
+    
+}
+
+#image{
+    margin-left: 600px;
+    display: flex;
+}
+
+nav ul {
+    list-style: none; /* Remove default bullet points */
+    display: flex; /* Align list items horizontally */
+    gap: 20px; /* Space between each item */
+}
+
+nav ul li a {
+    color: white; /* Text color */
+    text-decoration: none; /* Remove underline */
+    padding: 10px 20px; /* Add space inside the links */
+    border-radius: 5px; /* Optional: Rounds the corners */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+nav ul li a:hover {
+    background-color: #555; /* Background color on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav .main {
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align items to the left */
+    }
+
+    nav ul {
+        flex-direction: column; /* Stack menu items vertically */
+        width: 100%; /* Full width of the nav */
+    }
+
+    nav ul li a {
+        width: 100%; /* Full width of each menu item */
+        text-align: left; /* Align text to the left */
+        padding: 10px; /* Adjust padding */
+    }
+}
+
+
+ 
+
+
+#Introduction{
+    padding: 150px 10px 130px 50px;
+    background-image: url('giphy.gif');
+    background-size: 76%;
+   
+    background-position: right center;
+}
+#Introduction h2{
+    font-size: 40px;
+    color: red;
+    font-weight: bold;
+}
+#Introduction p{
+    font-size: 25px;
+    color: white;
+  
+}
+#Introduction a{
+    color: yellow;
+    text-decoration: none;
+}
+#Main_Calculation{
+    margin-top: -10px;
+    background-color: #000000;
+}
+
+#card-1 {
+
+ width: 310px;
+ margin-left: 80px;
+ margin-right: 10px;
+ text-align: center;
+ height: 100px;
+ background-color: #401364;
+ padding: 30px;
+ border-radius: 12px;
+ color: white ; 
+ 
+
+ }
+
+.card{
+    flex-wrap: wrap;
+    gap: 1.8vmin;
+    display: flex; /* Align items horizontally */
+    align-items: center; /* Center items vertically */
+}
+#card-1:hover{
+    background-color:  #6e08c2;
+    opacity: 8ms;
+    transition-delay: 4ms;
+}
+
+.card h2{
+    text-align: center;
+}
+.card #card-1 a{
+    text-decoration: none;
+    color: white;
+}
+hr{
+    height: 5px;
+    background-color: #0c0c0c;
+    margin: 0px 20px 0px 20px;
+}
+
+#Financial , #Business, #Math_Science, #Health_and_Fitness, #Budget_Savings {
+    margin: 0px 0px 10px 60px;
+}
+#Financial h2 ,#Business h2,#Math_Science  h2,
+#Health_and_Fitness  h2 ,  
+#Budget_Savings  h2{
+      margin: 10px 0px 10px 60px;
+      font-size: 30px;
+      color: #766fde;    
+}
+
+#Financial p , #Business p, #Math_Science p, #Health_and_Fitness p, #Budget_Savings p {
+    margin: 0px 20px 10px 60px;
+    color: white;
+    font-size: 18px;
+}
+
+
+
+#Advantage{
+    padding: 60px 0px 60px 0px;
+    background-color: #1c0c0c;
+    color: white;
+    text-align: center;
+    margin-top: -9.8px;
+}
+#Advantage a{
+    font-size: 18px;
+    text-decoration: none;
+}
+#Advantage #Ad{
+    display: flex;
+    margin: 0px 0px 0px 120px;
+    gap: 1.9vmin;
+}
+#Advantage #Ad h2{
+    color: #766fde;
+}
+#Advantage #Ad p{
+    font-size: large;
+}
+
+footer #Tools_and_link{
+    display: flex;
+    gap: 9vmin;
+    padding: 60px 0px 60px 0px;
+    h2{
+        color: #766fde;
+    }
+    ul li{
+        list-style-type: none;
+    }
+    a{
+        color:white;
+        text-decoration: none;
+    }
+    a:hover{
+        text-decoration: underline;
+        color: blue;
+    }
+   
+}
+footer{
+    background-color: black;
+}
+footer #Tools_and_link #tools {
+    margin: 0px 0px 0px 120px;
+   
+}
+#details{
+    padding: 30px 0px 40px 40px;
+    color: rgba(207, 207, 207, 0.831);
+    a{
+        text-decoration: none;
+        color: whitesmoke;
+    }
+    a:hover{
+        color: rgb(14, 93, 205);
+    }
+}
+#Icon{
+    font-size: 60px;
+}
+
+
+
+
+
+
+
+
+  

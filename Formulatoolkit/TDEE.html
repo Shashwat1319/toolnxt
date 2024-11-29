@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TDEE Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1CM9S92RRR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1CM9S92RRR');
+</script>
+</head>
+<body>
+    <nav>
+        <div class="main">
+        <img src="Logo.jpeg" alt="" id="Logo">
+        <ul>
+          <li><a href="index.html#Financial">Financial </a></li>
+          <li><a href="index.html#Business">Business </a></li>
+          <li><a href="index.html#Health_and_Fitness ">Health and Fitness </a></li>
+          <li><a href="index.html#Math_Science ">Math and Science </a></li>
+          <li><a href="index.html#Budget_Savings ">Budget and Savings </a></li>
+        </ul>
+       </div>
+    </nav>
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  background-image: url('GIF.webp');
+  background-position: center;
+  background-size: cover;
+}
+
+.container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input, .form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#results {
+  margin-top: 20px;
+}
+
+.result-group {
+  margin-bottom: 10px;
+}
+
+.result-group label {
+  font-weight: bold;
+}
+
+.result-group span {
+  display: inline-block;
+  margin-left: 10px;
+  font-weight: bold;
+  color: #007BFF;
+}
+
+/* Hide results initially */
+.hidden {
+  display: none;
+}
+
+    </style>
+  <div class="container">
+    <h1>TDEE Calculator</h1>
+    <form id="tdee-form">
+      <div class="form-group">
+        <label for="age">Age (years)</label>
+        <input type="number" id="age" placeholder="Enter age in years">
+      </div>
+
+      <div class="form-group">
+        <label for="weight">Weight (kg)</label>
+        <input type="number" id="weight" placeholder="Enter weight in kilograms">
+      </div>
+
+      <div class="form-group">
+        <label for="height">Height (cm)</label>
+        <input type="number" id="height" placeholder="Enter height in centimeters">
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="activity-level">Activity Level</label>
+        <select id="activity-level">
+          <option value="sedentary">Sedentary (little or no exercise)</option>
+          <option value="light">Lightly active (light exercise/sports 1-3 days/week)</option>
+          <option value="moderate">Moderately active (moderate exercise/sports 3-5 days/week)</option>
+          <option value="active">Very active (hard exercise/sports 6-7 days a week)</option>
+          <option value="extra-active">Extra active (very hard exercise/physical job)</option>
+        </select>
+      </div>
+
+      <button type="button" id="calculate-tdee">Calculate TDEE</button>
+    </form>
+
+    <div id="results" class="hidden">
+      <h2>Your TDEE</h2>
+      <div class="result-group">
+        <label>Result:</label>
+        <span id="tdee-result">--</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('calculate-tdee').addEventListener('click', function() {
+  const age = parseInt(document.getElementById('age').value);
+  const weight = parseFloat(document.getElementById('weight').value);
+  const height = parseFloat(document.getElementById('height').value);
+  const gender = document.getElementById('gender').value;
+  const activityLevel = document.getElementById('activity-level').value;
+
+  if (!isNaN(age) && !isNaN(weight) && !isNaN(height) && height > 0 && weight > 0 && age > 0) {
+    let bmr;
+
+    // Calculate BMR
+    if (gender === 'male') {
+      bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+    } else {
+      bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+    }
+
+    // Calculate TDEE based on activity level
+    let tdee;
+    switch (activityLevel) {
+      case 'sedentary':
+        tdee = bmr * 1.2;
+        break;
+      case 'light':
+        tdee = bmr * 1.375;
+        break;
+      case 'moderate':
+        tdee = bmr * 1.55;
+        break;
+      case 'active':
+        tdee = bmr * 1.725;
+        break;
+      case 'extra-active':
+        tdee = bmr * 1.9;
+        break;
+      default:
+        tdee = bmr;
+    }
+
+    document.getElementById('tdee-result').textContent = tdee.toFixed(2);
+
+    // Show the results
+    document.getElementById('results').classList.remove('hidden');
+  } else {
+    alert('Please enter valid values for age, weight, height, gender, and activity level.');
+  }
+});
+  </script>
+</body>
+</html>
